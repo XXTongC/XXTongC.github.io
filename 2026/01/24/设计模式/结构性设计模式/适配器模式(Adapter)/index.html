@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="适配器模式(Adapter)适配器的概率其实很好理解，它的目的在于允许接口不兼容的对象能够相互协作，经典的实例就是电源适配器，它能够连接不同标准的接口使得它们能够一起工作。 核心组成部分 目标接口（Target）：客户端期望的接口 适配者（Adaptee）：需要被适配的类，具有不兼容的接口 适配器（Adapter）：将适配者的接口转换为目标接口的类  两种实现方式 类适配器：使用多重继承（在C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F(Adapter)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="适配器模式(Adapter)适配器的概率其实很好理解，它的目的在于允许接口不兼容的对象能够相互协作，经典的实例就是电源适配器，它能够连接不同标准的接口使得它们能够一起工作。 核心组成部分 目标接口（Target）：客户端期望的接口 适配者（Adaptee）：需要被适配的类，具有不兼容的接口 适配器（Adapter）：将适配者的接口转换为目标接口的类  两种实现方式 类适配器：使用多重继承（在C++">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-23T20:42:35.669Z">
+<meta property="article:modified_time" content="2025-10-14T09:55:24.640Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-设计模式/结构性设计模式/适配器模式(Adapter)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F(Adapter)/" class="article-date">
+  <time class="dt-published" datetime="2026-01-23T20:42:35.669Z" itemprop="datePublished">2026-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="适配器模式-Adapter"><a href="#适配器模式-Adapter" class="headerlink" title="适配器模式(Adapter)"></a>适配器模式(Adapter)</h1><p>适配器的概率其实很好理解，它的目的在于允许接口不兼容的对象能够相互协作，经典的实例就是电源适配器，它能够连接不同标准的接口使得它们能够一起工作。</p>
+<h2 id="核心组成部分"><a href="#核心组成部分" class="headerlink" title="核心组成部分"></a>核心组成部分</h2><ol>
+<li>目标接口（Target）：客户端期望的接口</li>
+<li>适配者（Adaptee）：需要被适配的类，具有不兼容的接口</li>
+<li>适配器（Adapter）：将适配者的接口转换为目标接口的类</li>
+</ol>
+<h2 id="两种实现方式"><a href="#两种实现方式" class="headerlink" title="两种实现方式"></a>两种实现方式</h2><ol>
+<li>类适配器：使用多重继承（在C++中）实现</li>
+<li>对象适配器：使用组合关系实现（更常用）</li>
+</ol>
+<h2 id="适配器模式的适用场景"><a href="#适配器模式的适用场景" class="headerlink" title="适配器模式的适用场景"></a>适配器模式的适用场景</h2><ol>
+<li>使用现有类，但其接口与需求不匹配：例如，需要集成第三方库或遗留代码。</li>
+<li>创建可重用的类，与不相关或不可预见的类协同工作：适配器可以使原本不兼容的类一起工作。</li>
+<li>需要使用多个现有子类，但不可能对每一个都进行子类化以匹配接口：可以创建适配器来适配它们的父类。</li>
+<li>需要统一多个类的接口：当系统中存在多个类具有相似功能但接口不同时。</li>
+</ol>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="对象适配器"><a href="#对象适配器" class="headerlink" title="对象适配器"></a>对象适配器</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标接口 - 客户端期望的接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Target</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Target</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">request</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 适配者 - 具有不兼容接口的类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">specificRequest</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Specific request from Adaptee&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 适配器 - 将适配者接口转换为目标接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adapter</span> : <span class="keyword">public</span> Target &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::shared_ptr&lt;Adaptee&gt; adaptee;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Adapter</span>(std::shared_ptr&lt;Adaptee&gt; adaptee) : <span class="built_in">adaptee</span>(adaptee) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::string <span class="title">request</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 转换调用</span></span><br><span class="line">        std::string result = adaptee-&gt;<span class="built_in">specificRequest</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Adapter: (TRANSLATED) &quot;</span> + result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clientCode</span><span class="params">(<span class="type">const</span> Target&amp; target)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; target.<span class="built_in">request</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体目标实现 - 为了示例完整性</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteTarget</span> : <span class="keyword">public</span> Target &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">request</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ConcreteTarget: Standard request&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用原生目标对象</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Client: I can work with Target objects:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">auto</span> target = std::<span class="built_in">make_unique</span>&lt;ConcreteTarget&gt;();</span><br><span class="line">    <span class="built_in">clientCode</span>(*target);</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用适配者对象 + 适配器</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Client: I can work with Adaptee objects through the Adapter:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">auto</span> adaptee = std::<span class="built_in">make_shared</span>&lt;Adaptee&gt;();</span><br><span class="line">    <span class="keyword">auto</span> adapter = std::<span class="built_in">make_unique</span>&lt;Adapter&gt;(adaptee);</span><br><span class="line">    <span class="built_in">clientCode</span>(*adapter);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="类适配器"><a href="#类适配器" class="headerlink" title="类适配器"></a>类适配器</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Target</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Target</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">request</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 适配者</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Adaptee</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">specificRequest</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Specific request from Adaptee&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类适配器 - 使用多重继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ClassAdapter</span> : <span class="keyword">public</span> Target, <span class="keyword">private</span> Adaptee &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">request</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 直接调用父类方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ClassAdapter: (TRANSLATED) &quot;</span> + <span class="built_in">specificRequest</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">clientCode</span><span class="params">(<span class="type">const</span> Target&amp; target)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; target.<span class="built_in">request</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Client: Using ClassAdapter:&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    ClassAdapter adapter;</span><br><span class="line">    <span class="built_in">clientCode</span>(adapter);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F(Adapter)/" data-id="cmkrcm9v50009noul06drc7a7" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F(Decorator)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F(Adapter)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F(Decorator)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E3%80%81%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

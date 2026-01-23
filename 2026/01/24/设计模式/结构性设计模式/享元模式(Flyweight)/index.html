@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="享元模式(Flyweight)享元模式常常会用于有大量相似对象的场景下，我们会考虑如何将这些相似的对象储存起来的开销最小。 通常，我们会将享元模式下的对象分为可共享的内部状态和不可共享的外部状态。 享元模式的典型结构12345678910111213141516171819202122232425262728293031323334┌─────────────────┐│     Client">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F(Flyweight)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="享元模式(Flyweight)享元模式常常会用于有大量相似对象的场景下，我们会考虑如何将这些相似的对象储存起来的开销最小。 通常，我们会将享元模式下的对象分为可共享的内部状态和不可共享的外部状态。 享元模式的典型结构12345678910111213141516171819202122232425262728293031323334┌─────────────────┐│     Client">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-23T20:42:35.650Z">
+<meta property="article:modified_time" content="2025-10-27T08:14:00.252Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-设计模式/结构性设计模式/享元模式(Flyweight)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F(Flyweight)/" class="article-date">
+  <time class="dt-published" datetime="2026-01-23T20:42:35.650Z" itemprop="datePublished">2026-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="享元模式-Flyweight"><a href="#享元模式-Flyweight" class="headerlink" title="享元模式(Flyweight)"></a>享元模式(Flyweight)</h1><p>享元模式常常会用于有大量相似对象的场景下，我们会考虑如何将这些相似的对象储存起来的开销最小。</p>
+<p>通常，我们会将享元模式下的对象分为<strong>可共享的内部状态</strong>和<strong>不可共享的外部状态</strong>。</p>
+<h2 id="享元模式的典型结构"><a href="#享元模式的典型结构" class="headerlink" title="享元模式的典型结构"></a>享元模式的典型结构</h2><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────┐</span><br><span class="line">│     Client      │ (客户端)</span><br><span class="line">└────────┬────────┘</span><br><span class="line">         │ 请求享元对象</span><br><span class="line">         │ 传递外部状态</span><br><span class="line">         ↓</span><br><span class="line">┌─────────────────────────┐</span><br><span class="line">│   FlyweightFactory      │ (享元工厂)</span><br><span class="line">├─────────────────────────┤</span><br><span class="line">│- flyweights: Map        │ (享元对象池)</span><br><span class="line">├─────────────────────────┤</span><br><span class="line">│+ getFlyweight(key)      │ (获取或创建享元)</span><br><span class="line">└──────────┬──────────────┘</span><br><span class="line">           │ 创建/管理</span><br><span class="line">           │ 返回共享对象</span><br><span class="line">           ↓</span><br><span class="line">┌──────────────────────┐</span><br><span class="line">│     Flyweight        │ (抽象享元)</span><br><span class="line">│   &lt;&lt;interface&gt;&gt;      │</span><br><span class="line">├──────────────────────┤</span><br><span class="line">│+ operation(extrinsic)│ (接受外部状态)</span><br><span class="line">└──────▲───────────────┘</span><br><span class="line">       │</span><br><span class="line">       │ 实现</span><br><span class="line">       ├─────────────────────────┐</span><br><span class="line">       │                         │</span><br><span class="line">┌──────┴──────────────┐  ┌───────┴────────────┐</span><br><span class="line">│ConcreteFlyweight    │  │UnsharedFlyweight   │</span><br><span class="line">├─────────────────────┤  ├────────────────────┤</span><br><span class="line">│- intrinsicState     │  │- allState          │ (不共享)</span><br><span class="line">├─────────────────────┤  ├────────────────────┤</span><br><span class="line">│+ operation(extrinsic)│  │+ operation(...)    │</span><br><span class="line">└─────────────────────┘  └────────────────────┘</span><br><span class="line">   (共享的享元对象)         (不需要共享的对象)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>职责</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Flyweight</strong></td>
+<td>抽象享元</td>
+<td>声明接口，通过该接口享元可以接受并作用于外部状态</td>
+</tr>
+<tr>
+<td><strong>ConcreteFlyweight</strong></td>
+<td>具体享元</td>
+<td>实现Flyweight接口，存储内部状态（可共享）</td>
+</tr>
+<tr>
+<td><strong>UnsharedFlyweight</strong></td>
+<td>非共享享元</td>
+<td>不需要共享的Flyweight子类（可选）</td>
+</tr>
+<tr>
+<td><strong>FlyweightFactory</strong></td>
+<td>享元工厂</td>
+<td>创建并管理享元对象，确保合理地共享</td>
+</tr>
+<tr>
+<td><strong>Client</strong></td>
+<td>客户端</td>
+<td>维护外部状态，调用享元对象时传递外部状态</td>
+</tr>
+</tbody></table>
+<p>其工作流程大致如下：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">客户端请求 → FlyweightFactory.getFlyweight(key)</span><br><span class="line">                    ↓</span><br><span class="line">            检查享元池中是否存在该key</span><br><span class="line">                    ↓</span><br><span class="line">        ┌───────────┴───────────┐</span><br><span class="line">        ↓                       ↓</span><br><span class="line">    存在：返回现有享元      不存在：创建新享元</span><br><span class="line">        │                       │</span><br><span class="line">        │                   添加到享元池</span><br><span class="line">        │                       │</span><br><span class="line">        └───────────┬───────────┘</span><br><span class="line">                    ↓</span><br><span class="line">        返回享元对象给客户端</span><br><span class="line">                    ↓</span><br><span class="line">    客户端调用 flyweight.operation(extrinsicState)</span><br><span class="line">                    ↓</span><br><span class="line">        享元使用内部状态 + 外部状态完成操作</span><br></pre></td></tr></table></figure>
+
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><p>在游戏引擎中，我们会运用到很多纹理内容例如树木和草地等，我们不可能每次在世界中生成一棵树就为这颗树导入一个相同的纹理。常用的做法是创建一个纹理池，若在池中找不到这个纹理再从储存中导入这个纹理并将其储存在纹理池中。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>思考我们有一个需求，需要将一个文本的部分小写字母改为大写输出，比较幼稚的做法是为每个字母做一个是否为大小写的映射：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::string targetText;</span><br><span class="line"><span class="type">bool</span>* if_caps;</span><br></pre></td></tr></table></figure>
+
+<p>这种做法有什么缺点呢？</p>
+<ol>
+<li>浪费大量内存</li>
+<li>扩展性差，如果我们还需要将字符进行斜体、加粗等功能呢？</li>
+</ol>
+<p>那此时我们又会想到：储存需要更改的范围并将需要更改的相同的属性定义在一个类中。</p>
+<p>以下是其完整的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BetterFormattedText</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">TextRange</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> start, end;</span><br><span class="line">        <span class="type">bool</span> capitalize&#123;<span class="literal">false</span>&#125;;</span><br><span class="line">        <span class="comment">// other option here, e.g bold, italic, etc.</span></span><br><span class="line">        <span class="comment">// determine our range covers a particular position</span></span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">covers</span><span class="params">(<span class="type">int</span> position)</span> <span class="type">const</span> </span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> position &gt;= start &amp;&amp; position &lt;= end;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TextRange&amp; <span class="title">get_range</span><span class="params">(<span class="type">int</span> start,<span class="type">int</span> end)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        formatting.<span class="built_in">emplace_back</span>(TextRange&#123;start, end&#125;);</span><br><span class="line">        <span class="keyword">return</span> *formatting.<span class="built_in">rbegin</span>();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string plain_text;</span><br><span class="line">    std::vector&lt;TextRange&gt; formatting;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时，当我们需要用其享元数据输出我们的文本内容时可以这样做：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> ostream&amp; <span class="keyword">operator</span>&lt;&lt;(ostream&amp; os, <span class="type">const</span> BetterFormattedText&amp; obj)</span><br><span class="line">&#123;</span><br><span class="line">    std::string s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">size_t</span> i = <span class="number">0</span>;i &lt; obj.plain_text.<span class="built_in">length</span>();++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> c = obj.plain_text[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; rng : obj.formatting)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(rng.<span class="built_in">covers</span>(i)&amp;&amp;rng.capitalize)</span><br><span class="line">                c.<span class="built_in">toupper</span>(c);</span><br><span class="line">            s += c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> os &lt;&lt; s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F(Flyweight)/" data-id="cmkrcm9v30004noulew9z4y74" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F(Proxy)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F(Observer)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F(Adapter)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F(Decorator)/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F%E3%80%81%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E3%80%81%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/01/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%BB%93%E6%9E%84%E6%80%A7%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
